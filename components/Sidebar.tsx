@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { sidebarLinks } from '@/constants';
+import Image from 'next/image';
 
 const Sidebar = () => {
     const pathname = usePathname();
@@ -12,7 +13,7 @@ const Sidebar = () => {
         <section className='sticky left-0 top-0 flex h-screen w-fit flex-col justify-between bg-dark-1 p-6 pt-28 text-white max-sm:hidden lg:w-[264px]'>
             <div className='flex flex- flex-col gap-6'>
                 {sidebarLinks.map((link) => {
-                    const isActive = pathname === link.route || pathname.startsWith(link.route);
+                    const isActive = pathname === link.route || pathname.startsWith(`${link.route}/`);
                     return (
                         <Link
                             href={link.route}
@@ -21,7 +22,15 @@ const Sidebar = () => {
                                 'bg-blue-1': isActive,
                             })}
                         >
-                            {link.label}
+                            <Image
+                                src={link.imgUrl}
+                                alt={link.label}
+                                width={24}
+                                height={24}
+                            />
+                            <p className='text-lg font-semibold max-lg:hidden'>
+                                {link.label}
+                            </p>
                         </Link>
                     )
                 })}
