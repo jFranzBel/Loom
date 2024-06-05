@@ -25,20 +25,22 @@ const MeetingTypeList = () => {
    const { toast } = useToast();
 
    const createMeeting = async () => {
+
       if (!client || !user) return;
+
       try {
+
          if (!values.dateTime) {
-            toast({
-               title: 'Please select date and a time',
-            })
+            toast({ title: 'Please select date and a time' });
             return
          }
+
          const id = crypto.randomUUID();
          const call = client.call('default', id);
          if (!call) throw new Error('Failed to create meeting');
-         const startsAt =
-            values.dateTime.toISOString() || new Date(Date.now()).toISOString();
+         const startsAt = values.dateTime.toISOString() || new Date(Date.now()).toISOString();
          const description = values.description || 'Instant Meeting';
+
          await call.getOrCreate({
             data: {
                starts_at: startsAt,
@@ -47,19 +49,16 @@ const MeetingTypeList = () => {
                },
             },
          });
+
          setCallDetail(call);
-         if (!values.description) {
-            router.push(`/meeting/${call.id}`);
-         }
-         toast({
-            title: 'Meeting Created',
-         })
+         if (!values.description) { router.push(`/meeting/${call.id}`) };
+         toast({ title: 'Meeting Created' });
+
       } catch (error) {
-         console.log(error)
-         toast({
-            title: 'Failed to create Meeting',
-         })
+         console.log(error);
+         toast({ title: 'Failed to create Meeting' });
       }
+
    };
 
    return (
@@ -102,6 +101,7 @@ const MeetingTypeList = () => {
          />
       </section>
    )
+
 };
 
 export default MeetingTypeList;

@@ -92,6 +92,7 @@ const MeetingRoom = () => {
          </div>
       </section>
    )
+
 };
 
 export default MeetingRoom;

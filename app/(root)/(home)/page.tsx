@@ -3,7 +3,9 @@ import { timeDate } from '@/constants';
 import React from 'react';
 
 const Home = () => {
+
    const time = timeDate;
+
    return (
       <section className='flex size-full flex-col gap-10 text-white'>
          <div className='h-[300px] w-full rounded-[20px] bg-hero bg-cover'>
@@ -24,6 +26,7 @@ const Home = () => {
          <MeetingTypeList />
       </section>
    )
+
 };
 
 export default Home;

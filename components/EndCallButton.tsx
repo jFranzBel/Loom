@@ -15,7 +15,6 @@ const EndCallButton = () => {
 
    if (!isMeetingOwner) return null;
 
-
    return (
       <Button
          onClick={async () => {
@@ -27,6 +26,7 @@ const EndCallButton = () => {
          End Call for Everyone
       </Button>
    )
+
 };
 
 export default EndCallButton;

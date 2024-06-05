@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Button } from './ui/button';
 
 const MeetingSetup = ({ setIsSetupComplete }: { setIsSetupComplete: (value: boolean) => void }) => {
+
    const [isMicCamToggledOn, setIsMicCamToggledOn] = useState(false);
    const call = useCall();
 
@@ -45,6 +46,7 @@ const MeetingSetup = ({ setIsSetupComplete }: { setIsSetupComplete: (value: bool
          </Button>
       </div>
    )
+
 };
 
 export default MeetingSetup;
